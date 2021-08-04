@@ -10,6 +10,19 @@ class HomeController extends Controller
     {
         $nome = "Leandro";
         $idade = 43;
-        return view('welcome', ['nome' => $nome, 'idade' => $idade]);
+
+        $arr = [10,20,30,40,50];
+
+        $nomes = ["Matheus", "Maria", "Luciano", "Saulo"];
+
+
+        return view('welcome',
+         [
+             'nome' => $nome,
+             'idade' => $idade,
+             'profissão' => "Programador",
+             'arr' => $arr,
+             'nomes' => $nomes
+            ]);
     }
 }
