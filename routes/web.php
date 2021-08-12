@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+//use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [EventController::class, 'index']);
+Route::get('/events/create', [EventController::class, 'create']);
 
-Route::get(
-    '/',
-    [HomeController::class, 'index']
-);
+Route::get('/contato', function () {
+    return view('contact');
+});
+
+Route::get('/produtos', function () {
+    $busca = request('search');
+    return view('products', ['busca' => $busca]);
+});
+
+Route::get('/produtos_teste/{id?}', function ($id = null) {
+    return view('product', ['id' => $id]);
+});
+
+
